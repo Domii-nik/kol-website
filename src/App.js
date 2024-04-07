@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import './css/output.css';
+import Functions from "./functions/Functions";
+import Sorted from "./components/sorted";
 
 function App() {
-  return (
+    const {algorithms} = Functions();
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className={'flex'}>
+            <aside className={'w-1/5 min-w-[375px] p-5'}>
+                <Card title={'Sortieralgorithmen'}
+                      description={<p> Die hier gegebenen Einstellungsmöglichkeiten passen die <b>Generierung</b> des
+                          Arrays an.<br/>Zudem kann hier ausgewählt werden, welche <b>Sortieralgorithmen
+                              verglichen</b> werden sollen.</p>}/>
+            </aside>
+            <main className={'ml-10 mr-10 w-full mt-2 mb-2 pt-5 pb-5'} id={'main'}>
+                <div id={'sorted-div'} className={'border-4 border-[#233D4D] rounded-lg mb-2'}>
+                    {algorithms.map((Algorithm) => (
+                        Algorithm.visible && <Sorted Data={{
+                            algorithm: Algorithm.algorithm.toLowerCase(),
+                            duration: 'Noch nicht sortiert',
+                            sortedArray: ['Noch nicht sortiert']
+                        }}/>
+                    ))}
+                    <div id='scrollbar' className='text-center font-bold m-2'> Scrollbar</div>
+                </div>
+                <div id='unsorted-div' className='border-4 border-[#233D4D] rounded-lg mt-2'>
+                    <h2 className='text-center font-bold pt-2 text-[#FD7014] hover:drop-shadow-xl duration-200'>UNSORTIERT</h2>
+                    <p id='unsorted' className='border-2 border-[#233D4D] rounded-lg m-2 text-center p-1'>Noch nicht
+                        generiert! <br/> Zum Generieren auf den orangenen Knopf drücken</p>
+                </div>
+            </main>
+        </div>
     </div>
-  );
+    );
 }
 
 export default App;
