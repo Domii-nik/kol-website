@@ -24,7 +24,6 @@ function App() {
                             sortedArray: ['Noch nicht sortiert']
                         }}/>
                     ))}
-                    <div id='scrollbar' className='text-center font-bold m-2'> Scrollbar</div>
                 </div>
                 <div id='unsorted-div' className='border-4 border-[#233D4D] rounded-lg mt-2'>
                     <h2 className='text-center font-bold pt-2 text-[#FD7014] hover:drop-shadow-xl duration-200'>UNSORTIERT</h2>
